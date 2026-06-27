@@ -1,10 +1,10 @@
 let stock = {
 
-strawberry:10,
+  strawberry:10,
 
-banana:10,
+  banana:10,
 
-peach:10
+  peach:10
 
 };
 
@@ -16,11 +16,11 @@ let selected=[];
 
 const emoji={
 
-strawberry:"🔴",
+  strawberry:"🔴",
 
-banana:"🟡",
+  banana:"🟡",
 
-peach:"🩷"
+  peach:"🩷"
 
 };
 
@@ -31,39 +31,40 @@ peach:"🩷"
 function render(){
 
 
-document.getElementById("strawberryStock").innerHTML="";
+  document.getElementById("strawberryStock").innerHTML="";
 
-document.getElementById("bananaStock").innerHTML="";
+  document.getElementById("bananaStock").innerHTML="";
 
-document.getElementById("peachStock").innerHTML="";
+  document.getElementById("peachStock").innerHTML="";
 
 
 
-for(let i=0;i<stock.strawberry;i++){
+  for(let i=0;i<stock.strawberry;i++){
 
-createDango("strawberry","strawberryStock");
+    createDango("strawberry","strawberryStock");
+
+  }
+
+
+
+  for(let i=0;i<stock.banana;i++){
+
+    createDango("banana","bananaStock");
+
+  }
+
+
+
+  for(let i=0;i<stock.peach;i++){
+
+    createDango("peach","peachStock");
+
+  }
+
 
 }
 
 
-
-for(let i=0;i<stock.banana;i++){
-
-createDango("banana","bananaStock");
-
-}
-
-
-
-for(let i=0;i<stock.peach;i++){
-
-createDango("peach","peachStock");
-
-}
-
-
-
-}
 
 
 
@@ -72,201 +73,233 @@ createDango("peach","peachStock");
 function createDango(type,area){
 
 
-let span=document.createElement("span");
+  let span=document.createElement("span");
 
 
-span.innerText=emoji[type];
+  span.innerText=emoji[type];
 
 
-span.className="dango";
-
-
-
-span.onclick=function(){
+  span.className="dango";
 
 
 
-if(stock[type]<=0){
+  span.onclick=function(){
 
-return;
+
+
+    if(stock[type]<=0){
+
+      return;
+
+    }
+
+
+
+    stock[type]--;
+
+
+    selected.push(type);
+
+
+
+    // 個数表示更新
+
+    updateHint();
+
+
+
+    // 答え候補更新
+
+    updateChoices();
+
+
+
+
+    let plate=document.getElementById("plate");
+
+
+    plate.innerHTML += emoji[type];
+
+
+
+    if(selected.length>20){
+
+      plate.className="huge";
+
+    }
+
+    else if(selected.length>10){
+
+      plate.className="big";
+
+    }
+
+
+
+    render();
+
+
+  };
+
+
+
+  document.getElementById(area)
+  .appendChild(span);
+
 
 }
 
 
 
-stock[type]--;
-
-
-selected.push(type);
-
-
-
-let plate=document.getElementById("plate");
-
-
-plate.innerHTML += emoji[type];
-
-
-
-if(selected.length>20){
-
-plate.className="huge";
-
-}
-
-else if(selected.length>10){
-
-plate.className="big";
-
-}
-
-
-
-render();
-
-
-};
-
-
-
-document.getElementById(area)
-.appendChild(span);
-
-
-}
 
 
 
 
 
 
-document.getElementById("answerButton")
-.onclick=function(){
+function updateHint(){
+
+
+  let count={
+
+    strawberry:0,
+
+    banana:0,
+
+    peach:0
+
+  };
 
 
 
-let count={
+  selected.forEach(function(type){
 
-strawberry:0,
+    count[type]++;
 
-banana:0,
-
-peach:0
-
-};
+  });
 
 
 
-selected.forEach(function(type){
-
-count[type]++;
-
-});
+  let text="";
 
 
 
-let text="";
+  if(count.strawberry>0){
+
+    text+="🔴いちごが"+count.strawberry+"こ<br>";
+
+  }
 
 
 
-if(count.strawberry>0){
+  if(count.banana>0){
 
-text+="🔴いちごが"+count.strawberry+"こ<br>";
+    text+="🟡ばななが"+count.banana+"こ<br>";
 
-}
-
-
-if(count.banana>0){
-
-text+="🟡ばななが"+count.banana+"こ<br>";
-
-}
+  }
 
 
-if(count.peach>0){
 
-text+="🩷ももが"+count.peach+"こ<br>";
+  if(count.peach>0){
+
+    text+="🩷ももが"+count.peach+"こ<br>";
+
+  }
+
+
+
+  text+="ぜんぶでなんこかな？";
+
+
+
+  document.getElementById("hint")
+  .innerHTML=text;
+
 
 }
 
 
 
-text+="ぜんぶで なんこかな？";
-
-
-
-document.getElementById("hint")
-.innerHTML=text;
 
 
 
 
-let area=document.getElementById("choices");
 
 
-area.innerHTML="";
+// ★追加：答えボタンを常に最新状態にする
+
+function updateChoices(){
 
 
-
-let total=selected.length;
-
+  let area=document.getElementById("choices");
 
 
-let answers=[
-
-total,
-
-total+1,
-
-Math.max(0,total-1)
-
-];
+  area.innerHTML="";
 
 
 
-answers.sort(()=>Math.random()-0.5);
+  let total=selected.length;
 
 
 
-answers.forEach(function(num){
+  let answers=[
+
+    total,
+
+    total+1,
+
+    Math.max(0,total-1)
+
+  ];
 
 
 
-let btn=document.createElement("button");
-
-
-btn.innerText=num+"こ";
+  answers.sort(()=>Math.random()-0.5);
 
 
 
-btn.onclick=function(){
+  answers.forEach(function(num){
 
 
 
-if(num===selected.length){
+    let btn=document.createElement("button");
 
-showResult(true);
+
+    btn.innerText=num+"こ";
+
+
+
+    btn.onclick=function(){
+
+
+
+      if(num===selected.length){
+
+        showResult(true);
+
+      }
+
+      else{
+
+        showResult(false);
+
+      }
+
+
+    };
+
+
+
+    area.appendChild(btn);
+
+
+  });
+
 
 }
 
-else{
-
-showResult(false);
-
-}
 
 
-};
-
-
-
-area.appendChild(btn);
-
-
-});
-
-
-};
 
 
 
@@ -276,79 +309,80 @@ area.appendChild(btn);
 function showResult(correct){
 
 
-let box=document.createElement("div");
+  let box=document.createElement("div");
 
 
-box.className="result";
+  box.className="result";
 
 
 
-if(correct){
+  if(correct){
 
 
-box.classList.add("correct");
+    box.classList.add("correct");
 
 
-box.innerHTML="🎉✨ せいかい！ ✨🎉";
+    box.innerHTML="🎉✨ せいかい！ ✨🎉";
+
+
+  }
+
+  else{
+
+
+    box.classList.add("wrong");
+
+
+    box.innerHTML="💭 もういちど！";
+
+
+  }
+
+
+
+  document.body.appendChild(box);
+
+
+
+  setTimeout(function(){
+
+
+    document.body.removeChild(box);
+
+
+
+    if(correct){
+
+
+      selected=[];
+
+
+      document.getElementById("plate")
+      .innerHTML="";
+
+
+      document.getElementById("plate")
+      .className="";
+
+
+      document.getElementById("hint")
+      .innerHTML="";
+
+
+      document.getElementById("choices")
+      .innerHTML="";
+
+
+    }
+
+
+
+  },1800);
+
 
 
 }
 
-else{
-
-
-box.classList.add("wrong");
-
-
-box.innerHTML="💭 もういちど！";
-
-
-}
-
-
-
-document.body.appendChild(box);
-
-
-
-setTimeout(function(){
-
-
-document.body.removeChild(box);
-
-
-
-if(correct){
-
-
-selected=[];
-
-
-document.getElementById("plate")
-.innerHTML="";
-
-
-document.getElementById("plate")
-.className="";
-
-
-document.getElementById("hint")
-.innerHTML="";
-
-
-document.getElementById("choices")
-.innerHTML="";
-
-
-}
-
-
-
-},1800);
-
-
-
-}
 
 
 
@@ -362,39 +396,39 @@ document.getElementById("resetButton")
 
 
 
-stock={
+  stock={
 
-strawberry:10,
+    strawberry:10,
 
-banana:10,
+    banana:10,
 
-peach:10
+    peach:10
 
-};
-
-
-
-selected=[];
-
-
-document.getElementById("plate")
-.innerHTML="";
-
-
-document.getElementById("plate")
-.className="";
+  };
 
 
 
-document.getElementById("hint")
-.innerHTML="";
+  selected=[];
 
 
-document.getElementById("choices")
-.innerHTML="";
+  document.getElementById("plate")
+  .innerHTML="";
 
 
-render();
+  document.getElementById("plate")
+  .className="";
+
+
+
+  document.getElementById("hint")
+  .innerHTML="";
+
+
+  document.getElementById("choices")
+  .innerHTML="";
+
+
+  render();
 
 
 };
