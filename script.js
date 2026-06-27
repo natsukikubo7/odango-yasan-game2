@@ -16,11 +16,11 @@ let selected=[];
 
 const emoji={
 
-strawberry:"🍓",
+strawberry:"🔴",
 
-banana:"🍌",
+banana:"🟡",
 
-peach:"🍑"
+peach:"🩷"
 
 };
 
