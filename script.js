@@ -300,7 +300,7 @@ else{
 box.classList.add("wrong");
 
 
-box.innerHTML="💭 もういちどかんがえてみよう！";
+box.innerHTML="💭 もういちど！";
 
 
 }
