@@ -171,21 +171,21 @@ let text="";
 
 if(count.strawberry>0){
 
-text+="🍓いちごが"+count.strawberry+"こ<br>";
+text+="🔴いちごが"+count.strawberry+"こ<br>";
 
 }
 
 
 if(count.banana>0){
 
-text+="🍌ばななが"+count.banana+"こ<br>";
+text+="🟡ばななが"+count.banana+"こ<br>";
 
 }
 
 
 if(count.peach>0){
 
-text+="🍑ももが"+count.peach+"こ<br>";
+text+="🩷ももが"+count.peach+"こ<br>";
 
 }
 
