@@ -4,7 +4,7 @@ let stock = {
 
   banana:10,
 
-  peach:10
+  // peach:10
 
 };
 
@@ -20,7 +20,7 @@ const emoji={
 
   banana:"🟡",
 
-  peach:"🩷"
+  // peach:"🩷"
 
 };
 
@@ -35,7 +35,7 @@ function render(){
 
   document.getElementById("bananaStock").innerHTML="";
 
-  document.getElementById("peachStock").innerHTML="";
+  // document.getElementById("peachStock").innerHTML="";
 
 
 
@@ -55,11 +55,11 @@ function render(){
 
 
 
-  for(let i=0;i<stock.peach;i++){
+  // for(let i=0;i<stock.peach;i++){
 
-    createDango("peach","peachStock");
+  //   createDango("peach","peachStock");
 
-  }
+  // }
 
 
 }
@@ -166,7 +166,7 @@ function updateHint(){
 
     banana:0,
 
-    peach:0
+    // peach:0
 
   };
 
@@ -200,11 +200,11 @@ function updateHint(){
 
 
 
-  if(count.peach>0){
+  // if(count.peach>0){
 
-    text+="🩷ももが"+count.peach+"こ<br>";
+  //   text+="🩷ももが"+count.peach+"こ<br>";
 
-  }
+  // }
 
 
 
@@ -402,7 +402,7 @@ document.getElementById("resetButton")
 
     banana:10,
 
-    peach:10
+    //peach:10
 
   };
 
