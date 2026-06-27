@@ -96,13 +96,17 @@ margin:2px;
 
 #plate{
 
-height:90px;
+min-height:90px;
+
+width:90%;
+
+max-width:500px;
 
 background:white;
 
 border-radius:40px;
 
-margin:10px;
+margin:10px auto;
 
 display:flex;
 
@@ -114,7 +118,31 @@ align-items:center;
 
 font-size:35px;
 
+padding:10px;
+
+transition:0.3s;
+
 }
+
+
+
+/* おさらの大きさ調整 */
+
+#plate.big{
+
+min-height:150px;
+
+}
+
+
+
+#plate.huge{
+
+min-height:220px;
+
+}
+
+
 
 
 
@@ -144,7 +172,7 @@ background:#ffd966;
 
 
 
-/* けっか表示 */
+/* 結果表示 */
 
 .result{
 
@@ -160,9 +188,9 @@ background:white;
 
 border-radius:40px;
 
-padding:40px;
+padding:45px 60px;
 
-font-size:45px;
+font-size:55px;
 
 font-weight:bold;
 
@@ -170,11 +198,13 @@ z-index:10;
 
 box-shadow:0 0 30px rgba(0,0,0,0.2);
 
+white-space:nowrap;
+
 }
 
 
 
-/* せいかい */
+/* 正解 */
 
 .correct{
 
@@ -188,55 +218,46 @@ animation:jump 0.8s infinite;
 
 @keyframes jump{
 
-
 0%{
 
-transform:translateY(0);
+transform:translate(-50%,-50%);
 
 }
 
 
 50%{
 
-transform:translateY(-25px);
+transform:translate(-50%,-65%);
 
 }
 
 
 100%{
 
-transform:translateY(0);
+transform:translate(-50%,-50%);
+
+}
 
 }
 
 
-}
 
-
-
-/* もういちど */
+/* 不正解 */
 
 .wrong{
 
 color:#4285f4;
 
-font-size:35px;
+font-size:42px;
+
+white-space:nowrap;
 
 }
-
-
-
-.confetti{
-
-font-size:30px;
-
-}
-
-
 
 
 
 @media(max-width:600px){
+
 
 .dango{
 
@@ -244,9 +265,19 @@ font-size:22px;
 
 }
 
-#plate{
 
-height:70px;
+.result{
+
+font-size:45px;
+
+padding:35px;
+
+}
+
+
+.wrong{
+
+font-size:32px;
 
 }
 
