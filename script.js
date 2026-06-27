@@ -69,8 +69,9 @@ createDango("peach","peachStock");
 
 
 
-function createDango(type,area){
 
+
+function createDango(type,area){
 
 
 let span=document.createElement("span");
@@ -93,8 +94,27 @@ selected.push(type);
 
 
 
-document.getElementById("plate")
-.innerHTML += emoji[type];
+let plate=document.getElementById("plate");
+
+
+plate.innerHTML += emoji[type];
+
+
+
+// おさらサイズ変更
+
+if(selected.length > 20){
+
+plate.className="huge";
+
+}
+
+else if(selected.length > 10){
+
+plate.className="big";
+
+}
+
 
 
 render();
@@ -109,6 +129,7 @@ document.getElementById(area)
 
 
 }
+
 
 
 
@@ -144,7 +165,6 @@ total+2
 
 
 answers.sort(()=>Math.random()-0.5);
-
 
 
 
@@ -200,6 +220,7 @@ area.appendChild(btn);
 
 
 
+
 function showResult(correct){
 
 
@@ -214,31 +235,10 @@ box.className="result";
 if(correct){
 
 
-
 box.classList.add("correct");
 
 
-box.innerHTML=
-
-"🎉✨ せいかい！ ✨🎉<br>🍡すごいね！";
-
-
-
-setTimeout(function(){
-
-
-selected=[];
-
-
-document.getElementById("plate")
-.innerHTML="";
-
-
-document.body.removeChild(box);
-
-
-
-},1800);
+box.innerHTML="🎉✨ せいかい！ ✨🎉";
 
 
 
@@ -250,9 +250,15 @@ else{
 box.classList.add("wrong");
 
 
-box.innerHTML=
+box.innerHTML="💭 もういちどかんがえてみよう！";
 
-"💭 もういちど<br>かんがえてみよう！";
+
+}
+
+
+
+
+document.body.appendChild(box);
 
 
 
@@ -263,15 +269,23 @@ document.body.removeChild(box);
 
 
 
-},2000);
+if(correct){
 
+
+selected=[];
+
+
+document.getElementById("plate").innerHTML="";
+
+document.getElementById("plate").className="";
+
+document.getElementById("choices").innerHTML="";
 
 
 }
 
 
-
-document.body.appendChild(box);
+},1800);
 
 
 
@@ -289,7 +303,6 @@ document.getElementById("resetButton")
 .onclick=function(){
 
 
-
 stock={
 
 strawberry:10,
@@ -305,12 +318,11 @@ peach:10
 selected=[];
 
 
-document.getElementById("plate")
-.innerHTML="";
+document.getElementById("plate").innerHTML="";
 
+document.getElementById("plate").className="";
 
-document.getElementById("choices")
-.innerHTML="";
+document.getElementById("choices").innerHTML="";
 
 
 render();
