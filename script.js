@@ -439,4 +439,8 @@ document.getElementById("resetButton")
 
 
 
-render();
+window.onload=function(){
+
+  render();
+
+};
