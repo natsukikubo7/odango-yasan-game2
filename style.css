@@ -34,7 +34,6 @@ margin:5px;
 
 
 
-
 #stockArea{
 
 display:flex;
@@ -44,7 +43,6 @@ flex-direction:column;
 gap:5px;
 
 }
-
 
 
 
@@ -94,8 +92,6 @@ margin:2px;
 
 
 
-
-
 #plate{
 
 min-height:90px;
@@ -121,8 +117,6 @@ align-items:center;
 font-size:35px;
 
 padding:10px;
-
-transition:0.3s;
 
 }
 
@@ -151,24 +145,13 @@ font-size:26px;
 
 font-weight:bold;
 
-background:white;
+line-height:1.5;
 
-border-radius:20px;
-
-padding:15px;
-
-margin:15px auto;
-
-width:90%;
+margin:10px auto;
 
 max-width:450px;
 
-line-height:1.5;
-
-color:#555;
-
 }
-
 
 
 
@@ -195,9 +178,6 @@ cursor:pointer;
 background:#ffd966;
 
 }
-
-
-
 
 
 
@@ -231,8 +211,6 @@ white-space:nowrap;
 
 
 
-
-
 .correct{
 
 color:#ff7b00;
@@ -243,9 +221,7 @@ animation:jump 0.8s infinite;
 
 
 
-
 @keyframes jump{
-
 
 0%{
 
@@ -253,13 +229,11 @@ transform:translate(-50%,-50%);
 
 }
 
-
 50%{
 
 transform:translate(-50%,-65%);
 
 }
-
 
 100%{
 
@@ -267,9 +241,7 @@ transform:translate(-50%,-50%);
 
 }
 
-
 }
-
 
 
 
@@ -285,24 +257,12 @@ white-space:nowrap;
 
 
 
-
 @media(max-width:600px){
-
 
 .dango{
 
 font-size:22px;
 
 }
-
-
-.result{
-
-font-size:40px;
-
-padding:30px;
-
-}
-
 
 }
