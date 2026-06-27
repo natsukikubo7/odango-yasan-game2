@@ -18,7 +18,7 @@ h1{
 
 font-size:28px;
 
-margin:10px;
+margin:8px;
 
 }
 
@@ -28,9 +28,10 @@ h2{
 
 font-size:20px;
 
-margin:8px;
+margin:5px;
 
 }
+
 
 
 
@@ -43,6 +44,7 @@ flex-direction:column;
 gap:5px;
 
 }
+
 
 
 
@@ -60,7 +62,7 @@ padding:5px;
 
 .kind p{
 
-margin:3px;
+margin:2px;
 
 font-size:18px;
 
@@ -76,8 +78,6 @@ flex-wrap:wrap;
 
 justify-content:center;
 
-min-height:35px;
-
 }
 
 
@@ -91,6 +91,8 @@ cursor:pointer;
 margin:2px;
 
 }
+
+
 
 
 
@@ -126,8 +128,6 @@ transition:0.3s;
 
 
 
-/* おさらの大きさ調整 */
-
 #plate.big{
 
 min-height:150px;
@@ -145,10 +145,36 @@ min-height:220px;
 
 
 
+#hint{
+
+font-size:26px;
+
+font-weight:bold;
+
+background:white;
+
+border-radius:20px;
+
+padding:15px;
+
+margin:15px auto;
+
+width:90%;
+
+max-width:450px;
+
+line-height:1.5;
+
+color:#555;
+
+}
+
+
+
 
 button{
 
-font-size:20px;
+font-size:22px;
 
 padding:12px 25px;
 
@@ -172,7 +198,8 @@ background:#ffd966;
 
 
 
-/* 結果表示 */
+
+
 
 .result{
 
@@ -188,7 +215,7 @@ background:white;
 
 border-radius:40px;
 
-padding:45px 60px;
+padding:45px;
 
 font-size:55px;
 
@@ -204,7 +231,7 @@ white-space:nowrap;
 
 
 
-/* 正解 */
+
 
 .correct{
 
@@ -216,7 +243,9 @@ animation:jump 0.8s infinite;
 
 
 
+
 @keyframes jump{
+
 
 0%{
 
@@ -238,21 +267,22 @@ transform:translate(-50%,-50%);
 
 }
 
+
 }
 
 
 
-/* 不正解 */
 
 .wrong{
 
 color:#4285f4;
 
-font-size:42px;
+font-size:40px;
 
 white-space:nowrap;
 
 }
+
 
 
 
@@ -268,17 +298,11 @@ font-size:22px;
 
 .result{
 
-font-size:45px;
+font-size:40px;
 
-padding:35px;
-
-}
-
-
-.wrong{
-
-font-size:32px;
+padding:30px;
 
 }
+
 
 }
