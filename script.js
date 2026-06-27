@@ -191,7 +191,7 @@ text+="🍑ももが"+count.peach+"こ<br>";
 
 
 
-text+="ぜんぶで"+selected.length+"こかな？";
+text+="ぜんぶで なんこかな？";
 
 
 
