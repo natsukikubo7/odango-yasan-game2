@@ -39,6 +39,7 @@ document.getElementById("peachStock").innerHTML="";
 
 
 
+
 for(let i=0;i<stock.strawberry;i++){
 
 createDango("strawberry","strawberryStock");
@@ -74,6 +75,7 @@ createDango("peach","peachStock");
 function createDango(type,area){
 
 
+
 let span=document.createElement("span");
 
 
@@ -87,7 +89,17 @@ span.className="dango";
 span.onclick=function(){
 
 
+
+if(stock[type]<=0){
+
+return;
+
+}
+
+
+
 stock[type]--;
+
 
 
 selected.push(type);
@@ -101,19 +113,20 @@ plate.innerHTML += emoji[type];
 
 
 
-// おさらサイズ変更
 
-if(selected.length > 20){
+
+if(selected.length>20){
 
 plate.className="huge";
 
 }
 
-else if(selected.length > 10){
+else if(selected.length>10){
 
 plate.className="big";
 
 }
+
 
 
 
@@ -136,19 +149,80 @@ document.getElementById(area)
 
 
 
-
-
 document.getElementById("answerButton")
 .onclick=function(){
 
 
-let total=selected.length;
+
+let count={
+
+
+strawberry:0,
+
+banana:0,
+
+peach:0
+
+};
+
+
+
+selected.forEach(function(type){
+
+
+count[type]++;
+
+
+});
+
+
+
+
+let text="";
+
+
+
+if(count.strawberry>0){
+
+text+="🍓いちごが"+count.strawberry+"こ<br>";
+
+}
+
+
+if(count.banana>0){
+
+text+="🍌ばななが"+count.banana+"こ<br>";
+
+}
+
+
+if(count.peach>0){
+
+text+="🍑ももが"+count.peach+"こ<br>";
+
+}
+
+
+
+text+="ぜんぶでなんこかな？";
+
+
+
+document.getElementById("hint")
+.innerHTML=text;
+
+
+
 
 
 let area=document.getElementById("choices");
 
 
 area.innerHTML="";
+
+
+
+let total=selected.length;
 
 
 
@@ -168,10 +242,13 @@ answers.sort(()=>Math.random()-0.5);
 
 
 
+
 answers.forEach(function(num){
 
 
+
 let btn=document.createElement("button");
+
 
 
 btn.innerText=num+"こ";
@@ -179,7 +256,6 @@ btn.innerText=num+"こ";
 
 
 btn.onclick=function(){
-
 
 
 if(num===selected.length){
@@ -199,7 +275,6 @@ showResult(false);
 }
 
 
-
 };
 
 
@@ -207,8 +282,8 @@ showResult(false);
 area.appendChild(btn);
 
 
-});
 
+});
 
 
 };
@@ -241,7 +316,6 @@ box.classList.add("correct");
 box.innerHTML="🎉✨ せいかい！ ✨🎉";
 
 
-
 }
 
 else{
@@ -254,7 +328,6 @@ box.innerHTML="💭 もういちどかんがえてみよう！";
 
 
 }
-
 
 
 
@@ -275,14 +348,24 @@ if(correct){
 selected=[];
 
 
-document.getElementById("plate").innerHTML="";
+document.getElementById("plate")
+.innerHTML="";
 
-document.getElementById("plate").className="";
 
-document.getElementById("choices").innerHTML="";
+document.getElementById("plate")
+.className="";
+
+
+document.getElementById("hint")
+.innerHTML="";
+
+
+document.getElementById("choices")
+.innerHTML="";
 
 
 }
+
 
 
 },1800);
@@ -298,9 +381,9 @@ document.getElementById("choices").innerHTML="";
 
 
 
-
 document.getElementById("resetButton")
 .onclick=function(){
+
 
 
 stock={
@@ -318,17 +401,30 @@ peach:10
 selected=[];
 
 
-document.getElementById("plate").innerHTML="";
 
-document.getElementById("plate").className="";
+document.getElementById("plate")
+.innerHTML="";
 
-document.getElementById("choices").innerHTML="";
+
+document.getElementById("plate")
+.className="";
+
+
+
+document.getElementById("hint")
+.innerHTML="";
+
+
+document.getElementById("choices")
+.innerHTML="";
+
 
 
 render();
 
 
 };
+
 
 
 
