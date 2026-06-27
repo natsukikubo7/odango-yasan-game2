@@ -39,7 +39,6 @@ document.getElementById("peachStock").innerHTML="";
 
 
 
-
 for(let i=0;i<stock.strawberry;i++){
 
 createDango("strawberry","strawberryStock");
@@ -70,10 +69,7 @@ createDango("peach","peachStock");
 
 
 
-
-
 function createDango(type,area){
-
 
 
 let span=document.createElement("span");
@@ -101,7 +97,6 @@ return;
 stock[type]--;
 
 
-
 selected.push(type);
 
 
@@ -110,8 +105,6 @@ let plate=document.getElementById("plate");
 
 
 plate.innerHTML += emoji[type];
-
-
 
 
 
@@ -126,7 +119,6 @@ else if(selected.length>10){
 plate.className="big";
 
 }
-
 
 
 
@@ -148,14 +140,12 @@ document.getElementById(area)
 
 
 
-
 document.getElementById("answerButton")
 .onclick=function(){
 
 
 
 let count={
-
 
 strawberry:0,
 
@@ -169,12 +159,9 @@ peach:0
 
 selected.forEach(function(type){
 
-
 count[type]++;
 
-
 });
-
 
 
 
@@ -204,13 +191,12 @@ text+="🍑ももが"+count.peach+"こ<br>";
 
 
 
-text+="ぜんぶでなんこかな？";
+text+="ぜんぶで"+selected.length+"こかな？";
 
 
 
 document.getElementById("hint")
 .innerHTML=text;
-
 
 
 
@@ -232,14 +218,13 @@ total,
 
 total+1,
 
-total+2
+Math.max(0,total-1)
 
 ];
 
 
 
 answers.sort(()=>Math.random()-0.5);
-
 
 
 
@@ -250,7 +235,6 @@ answers.forEach(function(num){
 let btn=document.createElement("button");
 
 
-
 btn.innerText=num+"こ";
 
 
@@ -258,19 +242,16 @@ btn.innerText=num+"こ";
 btn.onclick=function(){
 
 
+
 if(num===selected.length){
 
-
 showResult(true);
-
 
 }
 
 else{
 
-
 showResult(false);
-
 
 }
 
@@ -280,7 +261,6 @@ showResult(false);
 
 
 area.appendChild(btn);
-
 
 
 });
@@ -293,11 +273,7 @@ area.appendChild(btn);
 
 
 
-
-
-
 function showResult(correct){
-
 
 
 let box=document.createElement("div");
@@ -401,7 +377,6 @@ peach:10
 selected=[];
 
 
-
 document.getElementById("plate")
 .innerHTML="";
 
@@ -417,7 +392,6 @@ document.getElementById("hint")
 
 document.getElementById("choices")
 .innerHTML="";
-
 
 
 render();
